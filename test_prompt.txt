@@ -1,0 +1,22 @@
+🎯 WHAT YOU SHOULD DO NOW
+✅ Use REAL-WORLD PROMPTS
+🟢 CLEAN PROMPT (should be valid)
+Build a CRM with login, contacts, dashboard, and role-based access for admin and users.
+
+👉 Expected:
+
+status: valid
+⚠️ SLIGHTLY MESSY PROMPT (should trigger repair)
+Build a CRM with login, contacts, dashboard, payments, and allow flexible fields across API and database.
+
+👉 Expected:
+
+sometimes mismatch
+system fixes → repaired
+🔴 BAD PROMPT (should fail)
+Build an app with users and features but do not define structure and allow anything dynamically.
+
+👉 Expected:
+
+system confused
+cannot fix fully → invalid
