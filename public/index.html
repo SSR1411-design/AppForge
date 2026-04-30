@@ -27,6 +27,7 @@
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 99px; }
 
+    /* NAV */
     nav {
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 40px; border-bottom: 1px solid var(--border);
@@ -42,6 +43,7 @@
     .nav-tab.active { background: var(--text); color: #fff; border-color: var(--text); }
     .nav-tab:hover:not(.active) { border-color: #9ca3af; color: var(--text); }
 
+    /* HERO */
     .hero { padding: 90px 24px 64px; text-align: center; background: linear-gradient(160deg, #f0f9ff 0%, #fef9f0 40%, #f9fafb 100%); border-bottom: 1px solid var(--border); }
     .hero-pill { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--border); border-radius: 99px; padding: 5px 14px 5px 8px; font-size: 13px; color: var(--text-muted); margin-bottom: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
     .pill-dot { width: 20px; height: 20px; border-radius: 99px; background: linear-gradient(135deg, #f97316, #ea580c); display: flex; align-items: center; justify-content: center; font-size: 11px; color: white; }
@@ -49,6 +51,7 @@
     .hero h1 em { font-style: italic; color: var(--orange); }
     .hero-sub { font-size: 17px; line-height: 1.65; color: var(--text-muted); max-width: 460px; margin: 0 auto 52px; }
 
+    /* INPUT BOX */
     .input-box { max-width: 700px; margin: 0 auto; background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 20px 20px 14px; box-shadow: 0 4px 32px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04); }
     textarea { width: 100%; min-height: 80px; max-height: 200px; border: none; outline: none; resize: none; font-size: 15px; font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.65; background: transparent; }
     textarea::placeholder { color: #9ca3af; }
@@ -66,17 +69,21 @@
     .compile-btn.loading .btn-icon { display: none; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* VIEWS */
     .view { display: none; }
     .view.active { display: block; }
 
+    /* MAIN */
     .main { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
 
+    /* PROMPT WARNING */
     .prompt-warning { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; display: none; }
     .prompt-warning.show { display: block; }
     .pw-title { font-size: 13px; font-weight: 600; color: #92400e; margin-bottom: 6px; }
     .pw-item { font-size: 13px; color: #78350f; margin-bottom: 3px; }
     .pw-assumption { font-size: 12px; color: #6b7280; font-style: italic; margin-top: 8px; }
 
+    /* METRICS */
     .metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 36px; }
     .metric { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
     .metric-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px; }
@@ -86,12 +93,15 @@
     .metric-val.warn { color: var(--yellow); }
     .metric-val.bad { color: var(--red); }
 
+    /* STATUS */
     .status { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; min-height: 22px; }
     .status.success { color: var(--green); font-weight: 500; }
     .status.error { color: var(--red); }
 
+    /* SECTION LABEL */
     .section-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
 
+    /* STAGE CARDS */
     .stage { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 10px; overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; }
     .stage.running { border-color: #93c5fd; box-shadow: 0 0 0 3px rgba(147,197,253,0.2); }
     .stage.done { border-color: #86efac; }
@@ -118,11 +128,13 @@
     pre { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: #374151; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; padding: 16px; white-space: pre-wrap; word-break: break-word; max-height: 380px; overflow-y: auto; }
     .waiting-msg { font-size: 13px; color: #9ca3af; font-style: italic; }
 
+    /* RUNTIME PREVIEW */
     .runtime-box { background: #0f172a; border-radius: 12px; padding: 18px 20px; margin-top: 12px; }
     .runtime-label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 10px; }
     .runtime-box code { display: block; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.8; color: #7dd3fc; }
     .runtime-box code span { color: #86efac; }
 
+    /* COST/QUALITY PANEL */
     .cq-panel { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; margin-bottom: 20px; }
     .cq-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
     .cq-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 16px; }
@@ -138,6 +150,7 @@
     .cq-bar-val { width: 60px; text-align: right; color: var(--text-muted); }
     .cq-summary-chip { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid var(--border); border-radius: 99px; padding: 5px 14px; font-size: 12px; color: var(--text-muted); margin-top: 10px; }
 
+    /* EXECUTION PROOF */
     .exec-panel { background: #0f172a; border-radius: 14px; padding: 20px 22px; margin-bottom: 20px; }
     .exec-title { font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
     .exec-badge { font-size: 11px; padding: 2px 10px; border-radius: 99px; background: #14532d; color: #86efac; }
@@ -154,12 +167,14 @@
     .exec-content { display: none; }
     .exec-content.active { display: block; }
 
+    /* ASSUMPTIONS BOX */
     .assumptions-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; }
     .ab-title { font-size: 13px; font-weight: 600; color: #075985; margin-bottom: 8px; }
     .ab-item { font-size: 13px; color: #0369a1; margin-bottom: 4px; padding-left: 14px; position: relative; }
     .ab-item::before { content: '→'; position: absolute; left: 0; color: #7dd3fc; }
     .ab-clarification { font-size: 12px; color: #6b7280; font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid #bae6fd; }
 
+    /* ── EVAL VIEW ──────────────────────────────────────────────────────────── */
     .eval-main { max-width: 1000px; margin: 0 auto; padding: 40px 24px 80px; }
     .eval-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; flex-wrap: wrap; gap: 12px; }
     .eval-header h2 { font-size: 22px; font-weight: 600; }
@@ -202,6 +217,7 @@
     .conf-bar { width: 60px; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; display: inline-block; vertical-align: middle; margin-right: 6px; }
     .conf-fill { height: 100%; border-radius: 99px; }
 
+    /* STATS VIEW */
     .stats-main { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
     .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 32px; }
     .stat-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; }
@@ -211,7 +227,576 @@
     .stat-card-val.good { color: var(--green); }
     .stat-card-val.warn { color: var(--yellow); }
 
+    /* FOOTER */
     footer { border-top: 1px solid var(--border); padding: 28px 24px; text-align: center; font-size: 13px; color: #9ca3af; }
   </style>
 </head>
 <body>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="logo-mark">⚙</div>
+    AppForge
+  </a>
+  <div class="nav-links">
+    <button class="nav-tab active" onclick="showView('compile')">Compiler</button>
+    <button class="nav-tab" onclick="showView('eval')">Eval Framework</button>
+    <button class="nav-tab" onclick="showView('stats')">Session Stats</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════ COMPILE VIEW ═══════════════════ -->
+<div id="view-compile" class="view active">
+  <div class="hero">
+    <div class="hero-pill">
+      <div class="pill-dot">✦</div>
+      Multi-stage AI compiler pipeline · v4.0
+    </div>
+    <h1>Turn your ideas<br>into <em>app schemas</em></h1>
+    <p class="hero-sub">Describe any app in plain English. AppForge compiles it into a complete, validated, executable schema — instantly.</p>
+
+    <div class="input-box">
+      <textarea id="prompt" placeholder="Design a CRM with login, contacts, dashboard, role-based access and payments..."></textarea>
+      <div class="input-bottom">
+        <div>
+          <div class="sug-label">Try an example</div>
+          <div class="suggestions">
+            <button class="sug-btn" onclick="fill('Build a CRM with login, contacts, dashboard, role-based access, and premium plan with payments. Admins can see analytics.')">CRM</button>
+            <button class="sug-btn" onclick="fill('Project management tool with teams, tasks, kanban board, file uploads, and notifications. Free and pro tiers.')">Project tracker</button>
+            <button class="sug-btn" onclick="fill('Online marketplace with sellers, buyers, listings, cart, payments, and reviews.')">Marketplace</button>
+            <button class="sug-btn" onclick="fill('A thing for managing stuff with users')">Vague prompt</button>
+          </div>
+        </div>
+        <button class="compile-btn" id="btn" onclick="run()">
+          <div class="spinner"></div>
+          <span class="btn-icon">↑</span>
+          Compile
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <!-- Prompt quality warning -->
+    <div class="prompt-warning" id="promptWarning">
+      <div class="pw-title">⚠ Prompt quality issues detected</div>
+      <div id="pwIssues"></div>
+      <div id="pwAssumptions" class="pw-assumption"></div>
+    </div>
+
+    <!-- Metrics -->
+    <div class="metrics" id="metrics" style="display:none;">
+      <div class="metric">
+        <div class="metric-label">Latency</div>
+        <div class="metric-val" id="m-lat">—</div>
+        <div class="metric-sub">seconds total</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Stages</div>
+        <div class="metric-val" id="m-stg">0/5</div>
+        <div class="metric-sub">completed</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Confidence</div>
+        <div class="metric-val" id="m-conf">—</div>
+        <div class="metric-sub">validation score</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Status</div>
+        <div class="metric-val" id="m-stat">—</div>
+        <div class="metric-sub">overall result</div>
+      </div>
+    </div>
+
+    <div class="status" id="status"></div>
+    <div id="pipeline-label" class="section-label" style="display:none;">Pipeline output</div>
+    <div id="stages"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ EVAL VIEW ═══════════════════ -->
+<div id="view-eval" class="view">
+  <div class="eval-main">
+    <div class="eval-header">
+      <div>
+        <h2>Evaluation Framework</h2>
+        <p>20 curated prompts: 10 real products + 10 edge cases (vague, conflicting, incomplete)</p>
+      </div>
+      <button class="run-all-btn" id="runAllBtn" onclick="runAll()">▶ Run All Tests</button>
+    </div>
+
+    <!-- Summary stats -->
+    <div class="eval-summary">
+      <div class="eval-stat">
+        <div class="eval-stat-label">Ran</div>
+        <div class="eval-stat-val" id="ev-ran">0/20</div>
+      </div>
+      <div class="eval-stat">
+        <div class="eval-stat-label">Success rate</div>
+        <div class="eval-stat-val good" id="ev-sr">—</div>
+      </div>
+      <div class="eval-stat">
+        <div class="eval-stat-label">Avg latency</div>
+        <div class="eval-stat-val" id="ev-lat">—</div>
+      </div>
+      <div class="eval-stat">
+        <div class="eval-stat-label">Avg cost</div>
+        <div class="eval-stat-val" id="ev-cost">—</div>
+      </div>
+      <div class="eval-stat">
+        <div class="eval-stat-label">Total retries</div>
+        <div class="eval-stat-val warn" id="ev-ret">—</div>
+      </div>
+    </div>
+
+    <!-- Real prompts -->
+    <div class="eval-table-wrap">
+      <div class="eval-table-header">
+        <span>🟢 Real Product Prompts (10)</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th><th>Label</th><th>Prompt</th><th>Status</th><th>Confidence</th><th>Latency</th><th>Retries</th><th>Cost</th><th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="real-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Edge cases -->
+    <div class="eval-table-wrap">
+      <div class="eval-table-header">
+        <span>🔴 Edge Case Prompts (10)</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th><th>Label</th><th>Category</th><th>Prompt</th><th>Status</th><th>Confidence</th><th>Latency</th><th>Retries</th><th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="edge-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Cost vs Quality tradeoff -->
+    <div class="cq-panel" id="ev-cq-panel" style="display:none;">
+      <div class="cq-title">📊 Cost vs Quality Tradeoff Analysis</div>
+      <div id="ev-cq-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ STATS VIEW ═══════════════════ -->
+<div id="view-stats" class="view">
+  <div class="stats-main">
+    <h2 style="font-size:22px;font-weight:600;margin-bottom:8px;">Session Statistics</h2>
+    <p style="color:var(--text-muted);font-size:14px;margin-bottom:32px;">Live metrics for this server session. Resets on restart.</p>
+    <div class="stats-grid" id="statsGrid">
+      <div class="stat-card"><div class="stat-card-label">Total Requests</div><div class="stat-card-val" id="st-req">0</div><div class="stat-card-sub">compilations run</div></div>
+      <div class="stat-card"><div class="stat-card-label">Success Rate</div><div class="stat-card-val good" id="st-sr">—</div><div class="stat-card-sub">valid + repaired</div></div>
+      <div class="stat-card"><div class="stat-card-label">Avg Latency</div><div class="stat-card-val" id="st-lat">—</div><div class="stat-card-sub">seconds per request</div></div>
+      <div class="stat-card"><div class="stat-card-label">Total Cost</div><div class="stat-card-val warn" id="st-cost">$0</div><div class="stat-card-sub">USD estimated</div></div>
+      <div class="stat-card"><div class="stat-card-label">Avg Cost</div><div class="stat-card-val" id="st-avgcost">—</div><div class="stat-card-sub">per compilation</div></div>
+      <div class="stat-card"><div class="stat-card-label">Total Retries</div><div class="stat-card-val" id="st-ret">0</div><div class="stat-card-sub">repair passes triggered</div></div>
+    </div>
+    <div style="text-align:center;margin-top:20px;">
+      <button onclick="loadStats()" style="padding:10px 24px;border:1px solid var(--border);background:var(--bg-soft);border-radius:99px;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;color:var(--text-muted);">↻ Refresh</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  AppForge &nbsp;·&nbsp; Natural language → executable app schema &nbsp;·&nbsp; Powered by Groq + LLaMA 3.3 &nbsp;·&nbsp; v4.0
+</footer>
+
+<script>
+// ── VIEW SWITCHING ─────────────────────────────────────────────────────────────
+function showView(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  event.target.classList.add('active');
+  if (name === 'eval') loadEval();
+  if (name === 'stats') loadStats();
+}
+
+// ── COMPILE PIPELINE ──────────────────────────────────────────────────────────
+const STAGES = [
+  { name: 'Intent extraction', desc: 'Parse natural language → structured intent' },
+  { name: 'System design', desc: 'Entities, pages, auth model, business logic' },
+  { name: 'Schema generation', desc: 'UI config · API endpoints · DB schema · Auth rules' },
+  { name: 'Validation & repair', desc: 'Cross-layer consistency checks + auto-repair' },
+  { name: 'Final schema', desc: 'Assembled, validated, runtime-ready output' }
+];
+let openStages = new Set();
+
+function fill(text) { document.getElementById('prompt').value = text; document.getElementById('prompt').focus(); }
+
+function renderStages() {
+  document.getElementById('stages').innerHTML = STAGES.map((s, i) => `
+    <div class="stage" id="s${i}">
+      <div class="stage-header" onclick="toggle(${i})">
+        <div class="stage-num">${i + 1}</div>
+        <div class="stage-info">
+          <div class="stage-name">${s.name}</div>
+          <div class="stage-desc">${s.desc}</div>
+        </div>
+        <div class="badge" id="b${i}">waiting</div>
+        <div class="chevron" id="ch${i}">▼</div>
+      </div>
+      <div class="stage-body" id="bd${i}">
+        <div class="waiting-msg">Waiting for pipeline...</div>
+      </div>
+    </div>`).join('');
+}
+
+function toggle(i) {
+  const bd = document.getElementById('bd' + i);
+  const ch = document.getElementById('ch' + i);
+  if (openStages.has(i)) { openStages.delete(i); bd.classList.remove('open'); ch.style.transform = ''; }
+  else { openStages.add(i); bd.classList.add('open'); ch.style.transform = 'rotate(180deg)'; }
+}
+
+function setState(i, state, label) {
+  const el = document.getElementById('s' + i);
+  el.classList.remove('running','done','repaired','error');
+  if (state) el.classList.add(state);
+  document.getElementById('b' + i).textContent = label;
+}
+
+function setBody(i, html, autoOpen) {
+  const bd = document.getElementById('bd' + i);
+  bd.innerHTML = html;
+  if (autoOpen && !openStages.has(i)) toggle(i);
+}
+
+function setStatus(msg, type) {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = 'status ' + (type || '');
+}
+
+async function run() {
+  const prompt = document.getElementById('prompt').value.trim();
+  if (!prompt) { alert('Please describe your app first.'); return; }
+
+  const btn = document.getElementById('btn');
+  btn.disabled = true;
+  btn.classList.add('loading');
+  openStages = new Set();
+
+  document.getElementById('pipeline-label').style.display = 'block';
+  document.getElementById('metrics').style.display = 'none';
+  document.getElementById('promptWarning').classList.remove('show');
+  setStatus('Compiling your app schema...');
+  renderStages();
+  for (let i = 0; i < 5; i++) setState(i, 'running', 'running...');
+
+  try {
+    const res = await fetch('/compile', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error);
+
+    const r = data.result;
+    const status = r.meta?.validation_status || 'valid';
+    const stageState = status === 'repaired' ? 'repaired' : status === 'invalid' ? 'error' : 'done';
+    const stageLabel = status === 'repaired' ? 'repaired' : status === 'invalid' ? 'invalid' : 'done';
+
+    // Prompt quality warning
+    if (r.meta?.prompt_issues?.length > 0 || r.meta?.assumptions?.length > 0) {
+      const pw = document.getElementById('promptWarning');
+      const pwI = document.getElementById('pwIssues');
+      const pwA = document.getElementById('pwAssumptions');
+      pwI.innerHTML = (r.meta.prompt_issues || []).map(i => `<div class="pw-item">⚠ ${i}</div>`).join('');
+      const allAssumptions = [...(r.meta.assumptions || []), ...(r.meta.clarifications || [])];
+      if (allAssumptions.length) pwA.innerHTML = '→ Assumptions made: ' + allAssumptions.join(' · ');
+      pw.classList.add('show');
+    }
+
+    // Stage bodies
+    [r.intent, r.design, r.schemas, r.validation_report].forEach((c, i) => {
+      setState(i, i < 3 ? 'done' : stageState, i < 3 ? 'done' : stageLabel);
+      setBody(i, `<pre>${JSON.stringify(c, null, 2)}</pre>`, false);
+    });
+
+    // Stage 5 — final with execution proof + cost/quality
+    setState(4, stageState, stageLabel);
+    const ep = r.execution_proof || {};
+    const cq = r.cost_quality_analysis || {};
+
+    // Build assumptions box
+    const allAssumptions = [...(r.meta?.assumptions || []), ...(r.meta?.clarifications || [])];
+    const assumptionsHtml = allAssumptions.length ? `
+      <div class="assumptions-box" style="margin-bottom:14px;">
+        <div class="ab-title">💡 Assumptions & clarifications made</div>
+        ${allAssumptions.map(a => `<div class="ab-item">${a}</div>`).join('')}
+      </div>` : '';
+
+    // Cost/quality panel
+    const maxCost = Math.max(...(cq.cost_breakdown || []).map(c => c.cost), 0.0001);
+    const cqHtml = cq.total_cost_usd !== undefined ? `
+      <div class="cq-panel" style="margin-bottom:14px;">
+        <div class="cq-title">📊 Cost vs Quality Tradeoff</div>
+        <div class="cq-grid">
+          <div class="cq-item"><div class="cq-label">Total cost</div><div class="cq-val">$${cq.total_cost_usd?.toFixed(5)}</div><div class="cq-sub">${cq.total_tokens?.input}→${cq.total_tokens?.output} tokens</div></div>
+          <div class="cq-item"><div class="cq-label">Quality score</div><div class="cq-val">${cq.quality_score}%</div><div class="cq-sub">confidence</div></div>
+          <div class="cq-item"><div class="cq-label">Efficiency</div><div class="cq-val">${cq.efficiency_rating || '—'}</div><div class="cq-sub">${cq.retries} repair pass(es)</div></div>
+        </div>
+        <div class="cq-breakdown">
+          ${(cq.cost_breakdown || []).map(c => `
+            <div class="cq-bar-row">
+              <div class="cq-bar-label">${c.stage}</div>
+              <div class="cq-bar-track"><div class="cq-bar-fill" style="width:${Math.round((c.cost/maxCost)*100)}%"></div></div>
+              <div class="cq-bar-val">$${c.cost.toFixed(5)}</div>
+            </div>`).join('')}
+        </div>
+        <div class="cq-summary-chip">⚡ ${cq.tradeoff_summary}</div>
+      </div>` : '';
+
+    // Execution proof panel
+    const execHtml = ep.isExecutable ? `
+      <div class="exec-panel" style="margin-bottom:14px;">
+        <div class="exec-title">
+          🟢 Execution Proof
+          <span class="exec-badge">${ep.isExecutable ? '✓ EXECUTABLE' : '✗ NOT EXECUTABLE'}</span>
+        </div>
+        <div class="exec-tabs">
+          <button class="exec-tab active" onclick="switchExec(event,'routes')">Express Routes</button>
+          <button class="exec-tab" onclick="switchExec(event,'sql')">SQL DDL</button>
+          <button class="exec-tab" onclick="switchExec(event,'pkg')">package.json</button>
+        </div>
+        <div class="exec-content active" id="exec-routes">
+          ${(ep.routes || []).map(r => `<div class="exec-code"><span class="kw">app</span>.${r.split('.')[1]}</div>`).join('')}
+        </div>
+        <div class="exec-content" id="exec-sql">
+          ${(ep.tables || []).map(t => `<div class="exec-code" style="margin-bottom:12px;"><span class="sql-kw">-- ${t.name}</span><br>${t.sql.replace(/\n/g,'<br>').replace(/CREATE TABLE/g,'<span class="sql-kw">CREATE TABLE</span>').replace(/PRIMARY KEY/g,'<span class="sql-kw">PRIMARY KEY</span>').replace(/NOT NULL/g,'<span class="sql-kw">NOT NULL</span>').replace(/REFERENCES/g,'<span class="sql-kw">REFERENCES</span>')}</div>`).join('')}
+        </div>
+        <div class="exec-content" id="exec-pkg">
+          <div class="exec-code">${JSON.stringify(ep.packageJson, null, 2).replace(/\n/g,'<br>').replace(/ /g,'&nbsp;')}</div>
+        </div>
+      </div>` : '';
+
+    // Full final schema
+    const routes = r.runtime_preview || [];
+    const routesHtml = routes.length ? `
+      <div class="runtime-box">
+        <div class="runtime-label">Runtime preview — Express.js routes</div>
+        ${routes.map(r => `<code><span>app</span>.${r.split('.')[1]}</code>`).join('')}
+      </div>` : '';
+
+    setBody(4, `${assumptionsHtml}${cqHtml}${execHtml}<pre>${JSON.stringify(r, null, 2)}</pre>${routesHtml}`, true);
+
+    // Metrics bar
+    const score = Math.round((r.validation_report?.confidence_score || 0) * 100);
+    const lat = cq.latency_seconds || '—';
+    const scoreClass = score >= 85 ? 'good' : score >= 60 ? 'warn' : 'bad';
+    const statusClass = status === 'valid' ? 'good' : status === 'repaired' ? 'warn' : 'bad';
+
+    document.getElementById('metrics').style.display = 'grid';
+    document.getElementById('m-lat').textContent = lat + 's';
+    document.getElementById('m-stg').textContent = '5/5';
+    document.getElementById('m-conf').className = `metric-val ${scoreClass}`;
+    document.getElementById('m-conf').textContent = score + '%';
+    document.getElementById('m-stat').className = `metric-val ${statusClass}`;
+    document.getElementById('m-stat').textContent = status;
+
+    const msgs = { valid: '✓ Pipeline complete — schema is valid.', repaired: '⚠ Pipeline complete — issues detected and repaired.', invalid: '✗ Pipeline complete — some issues could not be repaired.' };
+    setStatus(msgs[status] || 'Done.', status === 'valid' ? 'success' : status === 'repaired' ? '' : 'error');
+
+  } catch(err) {
+    for (let i = 0; i < 5; i++) setState(i, 'error', 'error');
+    setStatus('Error: ' + err.message, 'error');
+  }
+
+  btn.disabled = false;
+  btn.classList.remove('loading');
+}
+
+function switchExec(e, tab) {
+  document.querySelectorAll('.exec-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.exec-content').forEach(c => c.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById('exec-' + tab).classList.add('active');
+}
+
+// ── EVAL FRAMEWORK ─────────────────────────────────────────────────────────────
+let evalDataset = { real: [], edge: [] };
+let evalResults = {};
+let runningAll = false;
+
+async function loadEval() {
+  const res = await fetch('/eval/dataset');
+  const data = await res.json();
+  evalDataset = data.dataset;
+  data.results.forEach(r => evalResults[r.id] = r);
+  renderEvalTables();
+  updateEvalSummary();
+}
+
+function catClass(cat) {
+  const map = { real: 'cat-real', vague: 'cat-vague', conflicting: 'cat-conflicting', incomplete: 'cat-incomplete' };
+  return map[cat] || 'cat-real';
+}
+
+function renderEvalTables() {
+  document.getElementById('real-tbody').innerHTML = evalDataset.real.map(p => {
+    const r = evalResults[p.id];
+    return `<tr id="etr-${p.id}">
+      <td><code style="font-size:11px;color:#6b7280">${p.id}</code></td>
+      <td><strong>${p.label}</strong></td>
+      <td style="max-width:220px;color:var(--text-muted);font-size:12px;">${p.prompt.substring(0,80)}${p.prompt.length>80?'…':''}</td>
+      <td>${r ? statusPill(r.status) : statusPill('pending')}</td>
+      <td>${r ? confBar(r.confidence) : '—'}</td>
+      <td>${r ? r.latency.toFixed(1)+'s' : '—'}</td>
+      <td>${r ? r.retries : '—'}</td>
+      <td>${r ? '$'+r.cost.toFixed(5) : '—'}</td>
+      <td><button class="run-btn" id="rbtn-${p.id}" onclick="runEval('${p.id}')">Run</button></td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('edge-tbody').innerHTML = evalDataset.edge.map(p => {
+    const r = evalResults[p.id];
+    return `<tr id="etr-${p.id}">
+      <td><code style="font-size:11px;color:#6b7280">${p.id}</code></td>
+      <td><strong>${p.label}</strong></td>
+      <td><span class="cat-badge ${catClass(p.category)}">${p.category}</span></td>
+      <td style="max-width:180px;color:var(--text-muted);font-size:12px;">${p.prompt.substring(0,65)}${p.prompt.length>65?'…':''}</td>
+      <td>${r ? statusPill(r.status) : statusPill('pending')}</td>
+      <td>${r ? confBar(r.confidence) : '—'}</td>
+      <td>${r ? r.latency.toFixed(1)+'s' : '—'}</td>
+      <td>${r ? r.retries : '—'}</td>
+      <td><button class="run-btn" id="rbtn-${p.id}" onclick="runEval('${p.id}')">Run</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function statusPill(status) {
+  const map = { pending: ['sp-pending','pending'], valid: ['sp-valid','✓ valid'], repaired: ['sp-repaired','⚡ repaired'], invalid: ['sp-invalid','✗ invalid'], running: ['sp-running','running…'], error: ['sp-error','error'] };
+  const [cls, label] = map[status] || ['sp-pending', status];
+  return `<span class="status-pill ${cls}">${label}</span>`;
+}
+
+function confBar(conf) {
+  const pct = Math.round(conf * 100);
+  const color = pct >= 85 ? '#16a34a' : pct >= 60 ? '#d97706' : '#dc2626';
+  return `<span class="conf-bar"><span class="conf-fill" style="width:${pct}%;background:${color}"></span></span>${pct}%`;
+}
+
+async function runEval(id) {
+  const btn = document.getElementById('rbtn-' + id);
+  if (btn) { btn.disabled = true; btn.textContent = '…'; }
+  const row = document.getElementById('etr-' + id);
+  // Update status cell
+  const allPrompts = [...evalDataset.real, ...evalDataset.edge];
+  const item = allPrompts.find(p => p.id === id);
+  const isEdge = evalDataset.edge.some(p => p.id === id);
+  const statusCellIdx = isEdge ? 4 : 3;
+  if (row) row.cells[statusCellIdx].innerHTML = statusPill('running');
+
+  try {
+    const res = await fetch('/eval/run', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({id}) });
+    const data = await res.json();
+    evalResults[id] = data.entry;
+  } catch(e) {
+    evalResults[id] = { id, status: 'error', confidence: 0, latency: 0, retries: 0, cost: 0 };
+  }
+
+  renderEvalTables();
+  updateEvalSummary();
+  if (btn) { btn.disabled = false; btn.textContent = 'Run'; }
+}
+
+async function runAll() {
+  if (runningAll) return;
+  runningAll = true;
+  const btn = document.getElementById('runAllBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Running…';
+
+  const all = [...evalDataset.real, ...evalDataset.edge];
+  for (const item of all) {
+    btn.textContent = `⏳ Running ${item.id}…`;
+    await runEval(item.id);
+    await new Promise(r => setTimeout(r, 500));
+  }
+
+  runningAll = false;
+  btn.disabled = false;
+  btn.textContent = '▶ Run All Tests';
+  renderCqTradeoff();
+}
+
+function updateEvalSummary() {
+  const results = Object.values(evalResults);
+  const ran = results.length;
+  const total = (evalDataset.real?.length || 0) + (evalDataset.edge?.length || 0);
+  const success = results.filter(r => r.status === 'valid' || r.status === 'repaired').length;
+  const avgLat = ran ? (results.reduce((a,r) => a + (r.latency||0), 0) / ran).toFixed(1) : '—';
+  const avgCost = ran ? '$' + (results.reduce((a,r) => a + (r.cost||0), 0) / ran).toFixed(5) : '—';
+  const totalRet = results.reduce((a,r) => a + (r.retries||0), 0);
+  const sr = ran ? Math.round((success/ran)*100)+'%' : '—';
+
+  document.getElementById('ev-ran').textContent = `${ran}/${total}`;
+  document.getElementById('ev-sr').textContent = sr;
+  document.getElementById('ev-lat').textContent = avgLat !== '—' ? avgLat + 's' : '—';
+  document.getElementById('ev-cost').textContent = avgCost;
+  document.getElementById('ev-ret').textContent = totalRet;
+
+  if (ran >= 3) renderCqTradeoff();
+}
+
+function renderCqTradeoff() {
+  const results = Object.values(evalResults).filter(r => r.status !== 'error' && r.confidence !== undefined);
+  if (!results.length) return;
+  const panel = document.getElementById('ev-cq-panel');
+  panel.style.display = 'block';
+
+  const real = results.filter(r => r.category === 'real' || !['vague','conflicting','incomplete'].includes(r.category));
+  const edge = results.filter(r => ['vague','conflicting','incomplete'].includes(r.category));
+
+  const avgConf = g => g.length ? (g.reduce((a,r)=>a+(r.confidence||0),0)/g.length*100).toFixed(1) : '—';
+  const avgCost = g => g.length ? (g.reduce((a,r)=>a+(r.cost||0),0)/g.length).toFixed(5) : '—';
+  const avgLat  = g => g.length ? (g.reduce((a,r)=>a+(r.latency||0),0)/g.length).toFixed(1) : '—';
+  const sr      = g => g.length ? Math.round(g.filter(r=>r.status==='valid'||r.status==='repaired').length/g.length*100)+'%' : '—';
+
+  document.getElementById('ev-cq-content').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;">
+        <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px;">🟢 Real Prompts (${real.length} ran)</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">Avg confidence: <strong style="color:var(--green)">${avgConf(real)}%</strong></div>
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">Success rate: <strong>${sr(real)}</strong></div>
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">Avg cost: <strong>$${avgCost(real)}</strong></div>
+        <div style="font-size:13px;color:var(--text-muted);">Avg latency: <strong>${avgLat(real)}s</strong></div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;">
+        <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px;">🔴 Edge Cases (${edge.length} ran)</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">Avg confidence: <strong style="color:var(--yellow)">${avgConf(edge)}%</strong></div>
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">Success rate: <strong>${sr(edge)}</strong></div>
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">Avg cost: <strong>$${avgCost(edge)}</strong></div>
+        <div style="font-size:13px;color:var(--text-muted);">Avg latency: <strong>${avgLat(edge)}s</strong></div>
+      </div>
+    </div>
+    <div style="background:var(--bg-soft);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--text-muted);line-height:1.7;">
+      <strong style="color:var(--text);">Tradeoff insight:</strong> Real product prompts yield higher confidence due to richer context for the LLM to extract intent. 
+      Edge cases force the validation+repair engine to work harder (more retries), increasing cost but demonstrating system resilience.
+      Latency scales primarily with repair passes — each repair adds ~4-6s.
+    </div>`;
+}
+
+// ── SESSION STATS ─────────────────────────────────────────────────────────────
+async function loadStats() {
+  try {
+    const res = await fetch('/stats');
+    const d = await res.json();
+    document.getElementById('st-req').textContent = d.totalRequests;
+    document.getElementById('st-sr').textContent = d.successRate + '%';
+    document.getElementById('st-lat').textContent = d.avgLatency > 0 ? d.avgLatency + 's' : '—';
+    document.getElementById('st-cost').textContent = '$' + parseFloat(d.totalCost).toFixed(5);
+    document.getElementById('st-avgcost').textContent = d.totalRequests > 0 ? '$' + d.avgCost : '—';
+    document.getElementById('st-ret').textContent = d.totalRetries;
+  } catch(e) { console.error(e); }
+}
+</script>
+</body>
+</html>

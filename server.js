@@ -8,6 +8,8 @@ const app = express();
 app.use(express.json());
 app.use(express.static('public'));
 
+// ─── COST TRACKING ────────────────────────────────────────────────────────────
+// LLaMA 3.3 70B on Groq: ~$0.59/1M input tokens, ~$0.79/1M output tokens (approx)
 const COST_PER_1K_INPUT  = 0.00059;
 const COST_PER_1K_OUTPUT = 0.00079;
 let sessionStats = { totalRequests: 0, totalCost: 0, totalLatency: 0, totalRetries: 0, successCount: 0, failCount: 0 };
@@ -16,6 +18,7 @@ function estimateCost(promptTokens, completionTokens) {
   return ((promptTokens / 1000) * COST_PER_1K_INPUT) + ((completionTokens / 1000) * COST_PER_1K_OUTPUT);
 }
 
+// ─── EVAL DATASET ─────────────────────────────────────────────────────────────
 const EVAL_DATASET = {
   real: [
     { id: 'r1', label: 'CRM', prompt: 'Build a CRM with login, contacts, dashboard, role-based access, and premium plan with payments. Admins can see analytics.' },
@@ -43,12 +46,15 @@ const EVAL_DATASET = {
   ]
 };
 
+// ─── EVALUATION RESULTS STORE (in-memory, reset on restart) ──────────────────
 let evalResults = [];
 
+// ─── HELPERS ──────────────────────────────────────────────────────────────────
 function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// ─── VAGUE PROMPT DETECTOR ───────────────────────────────────────────────────
 function analyzePromptQuality(prompt) {
   const words = prompt.trim().split(/\s+/);
   const issues = [];
@@ -69,6 +75,7 @@ function analyzePromptQuality(prompt) {
   return { issues, assumptions, clarifications, wordCount: words.length, quality: issues.length === 0 ? 'good' : issues.length <= 2 ? 'fair' : 'poor' };
 }
 
+// ─── GROQ API CALL ────────────────────────────────────────────────────────────
 async function callGroq(prompt, systemOverride) {
   const system = systemOverride || 'You are an app schema compiler. Always respond with valid JSON only. No markdown, no backticks, no explanation. Just raw JSON.';
   const t0 = Date.now();
@@ -109,6 +116,7 @@ async function callGroq(prompt, systemOverride) {
   };
 }
 
+// ─── REPAIR ───────────────────────────────────────────────────────────────────
 async function repairSchemas(schemas, issues) {
   const result = await callGroq(`
 You are a schema repair engine. Fix ALL of these issues in the schema below.
@@ -130,6 +138,7 @@ ${JSON.stringify(schemas)}
   return result;
 }
 
+// ─── RUNTIME GENERATION ───────────────────────────────────────────────────────
 function generateExpressRoutes(apiSchema) {
   if (!apiSchema?.endpoints) return [];
   return apiSchema.endpoints.map(ep =>
@@ -141,15 +150,13 @@ function generateExecutionProof(schemas) {
   const routes = generateExpressRoutes(schemas.api_schema);
   const tables = schemas.db_schema?.tables?.map(t => ({
     name: t.name,
-    sql: `CREATE TABLE ${t.name} (
-  ${t.columns.map(c => {
+    sql: `CREATE TABLE ${t.name} (\n  ${t.columns.map(c => {
       let def = `${c.name} ${c.type.toUpperCase()}`;
       if (c.primary_key) def += ' PRIMARY KEY';
       if (!c.nullable) def += ' NOT NULL';
       if (c.foreign_key) def += ` REFERENCES ${c.foreign_key}(id)`;
       return def;
-    }).join(',\n  ')}
-);`
+    }).join(',\n  ')}\n);`
   })) || [];
 
   const packageJson = {
@@ -161,6 +168,7 @@ function generateExecutionProof(schemas) {
   return { routes, tables, packageJson, isExecutable: routes.length > 0 && tables.length > 0 };
 }
 
+// ─── VALIDATION ───────────────────────────────────────────────────────────────
 function validateSchemas(schemas, intentRoles, strict = true) {
   const issues = [];
   const dbFields = schemas.db_schema?.tables?.flatMap(t => t.columns.map(c => c.name)) || [];
@@ -232,14 +240,17 @@ function validateSchemas(schemas, intentRoles, strict = true) {
   return issues;
 }
 
+// ─── COMPILE PIPELINE ─────────────────────────────────────────────────────────
 async function runPipeline(prompt) {
   const costBreakdown = [];
   let totalCost = 0;
   let totalTokens = { input: 0, output: 0 };
   const t0 = Date.now();
 
+  // Prompt quality check
   const promptAnalysis = analyzePromptQuality(prompt);
 
+  // STAGE 1 — INTENT
   const intentResult = await callGroq(`
 Extract structured intent from this app description. Return ONLY valid JSON.
 Format:
@@ -263,6 +274,7 @@ App description: "${prompt}"
 
   await wait(2000);
 
+  // STAGE 2 — DESIGN
   const designResult = await callGroq(`
 Convert this app intent into system architecture. Return ONLY valid JSON.
 Format:
@@ -282,6 +294,7 @@ Intent: ${JSON.stringify(intentResult.data)}
 
   await wait(2000);
 
+  // STAGE 3 — SCHEMA
   const schemaResult = await callGroq(`
 Generate complete app schemas from this system design. Return ONLY valid JSON.
 Format:
@@ -303,6 +316,7 @@ Intent: ${JSON.stringify(intentResult.data)}
 
   let schemas = schemaResult.data;
 
+  // STAGE 4 — VALIDATION & REPAIR
   let issues = validateSchemas(schemas, intentResult.data.roles, true);
   let validation;
   let repairCost = 0;
@@ -362,6 +376,7 @@ Intent: ${JSON.stringify(intentResult.data)}
   const totalLatency = (Date.now() - t0) / 1000;
   const executionProof = generateExecutionProof(schemas);
 
+  // Cost vs Quality analysis
   const costQualityAnalysis = {
     total_cost_usd: parseFloat(totalCost.toFixed(6)),
     total_tokens: totalTokens,
@@ -375,6 +390,7 @@ Intent: ${JSON.stringify(intentResult.data)}
     tradeoff_summary: `${totalLatency.toFixed(1)}s latency · $${totalCost.toFixed(5)} cost · ${Math.round(validation.confidence_score * 100)}% confidence`
   };
 
+  // Update session stats
   sessionStats.totalRequests++;
   sessionStats.totalCost += totalCost;
   sessionStats.totalLatency += totalLatency;
@@ -406,11 +422,15 @@ Intent: ${JSON.stringify(intentResult.data)}
   };
 }
 
+// ─── ROUTES ───────────────────────────────────────────────────────────────────
+
+// Main compile endpoint
 app.post('/compile', async (req, res) => {
   const { prompt } = req.body;
   if (!prompt) return res.status(400).json({ error: 'No prompt provided' });
   if (prompt.trim().length < 3) return res.status(400).json({ error: 'Prompt too short.' });
 
+  // For very short prompts, still proceed but warn
   try {
     const result = await runPipeline(prompt.trim());
     res.json({ success: true, result });
@@ -420,6 +440,7 @@ app.post('/compile', async (req, res) => {
   }
 });
 
+// Run a single eval prompt
 app.post('/eval/run', async (req, res) => {
   const { id } = req.body;
   const allPrompts = [...EVAL_DATASET.real, ...EVAL_DATASET.edge];
@@ -459,10 +480,12 @@ app.post('/eval/run', async (req, res) => {
   }
 });
 
+// Get eval dataset + results
 app.get('/eval/dataset', (req, res) => {
   res.json({ dataset: EVAL_DATASET, results: evalResults });
 });
 
+// Get session stats
 app.get('/stats', (req, res) => {
   res.json({
     ...sessionStats,
